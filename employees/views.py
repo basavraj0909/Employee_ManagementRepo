@@ -13,6 +13,26 @@ logger = logging.getLogger(__name__)
 
 
 class EmployeeRegisterView(APIView):
+    """
+   API endpoint for registering a new employee.
+
+   This endpoint allows users to register by providing their details
+   such as first name, last name, email, mobile number, and password.
+   On successful registration, the user details are saved in the database,
+   and a success message is returned.
+
+   Request Body:
+   - fname: First name of the employee (string)
+   - lname: Last name of the employee (string)
+   - mobile: Mobile number of the employee (string)
+   - email: Email address of the employee (string)
+   - password: Password for the account (string)
+
+   Response:
+   - 201: User registered successfully.
+   - 400: Bad request if the data provided is not valid.
+   """
+
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
@@ -27,6 +47,22 @@ class EmployeeRegisterView(APIView):
 
 
 class EmployeeLoginView(APIView):
+
+    """
+    API endpoint for employee login.
+
+    This endpoint allows employees to log in by providing their email and password.
+    If the credentials are correct, the employee's details are returned. If not,
+    an error message is returned.
+
+    Request Body:
+    - email: Email address of the employee (string)
+    - password: Password for the account (string)
+
+    Response:
+    - 200: Employee logged in successfully, returns employee details.
+    - 404: Employee not found or incorrect password.
+    """
 
     def post(self, request):
 
