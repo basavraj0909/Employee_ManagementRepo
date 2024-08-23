@@ -47,7 +47,6 @@ class EmployeeRegisterView(APIView):
 
 
 class EmployeeLoginView(APIView):
-
     """
     API endpoint for employee login.
 
