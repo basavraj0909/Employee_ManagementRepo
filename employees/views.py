@@ -2,7 +2,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
-from rest_framework import generics
 
 from django.contrib.auth.hashers import check_password
 from .models import Employee
@@ -69,11 +68,12 @@ class EmployeeLoginView(APIView):
         password = request.data.get('password')
 
         try:
+
             employee = Employee.objects.get(email=email)
 
             if check_password(password, employee.password):
                 serializer = EmployeeSerializer(employee)
-                logger.info(f'EMployee {email} logged in successfully')
+                logger.info(f'Employee: {email}, logged in successfully')
                 return Response(serializer.data, status=status.HTTP_200_OK)
             else:
                 logger.warning(f'Login attempt failed for {email}. Incorrect Password')
