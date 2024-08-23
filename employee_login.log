@@ -1,0 +1,4 @@
+WARNING: 2024-08-18 00:23:08,155: log: Bad Request: /employees/register/
+INFO: 2024-08-18 00:26:41,708: autoreload: E:\STUDIES1\django_projects\employee_management_project\employees\serializers.py changed, reloading.
+INFO: 2024-08-18 00:26:44,695: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-18 00:59:09,824: autoreload: Watching for file changes with StatReloader
