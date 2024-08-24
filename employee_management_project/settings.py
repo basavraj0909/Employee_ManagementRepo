@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'employees',
+    'emp_routers_app',
 ]
 
 MIDDLEWARE = [
@@ -60,17 +61,24 @@ WSGI_APPLICATION = 'employee_management_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': config.get('DATABASE', 'ENGINE'),
-        'NAME': config.get('DATABASE', 'NAME'),
-        'USER': config.get('DATABASE', 'USER'),
-        'PASSWORD': config.get('DATABASE', 'PASSWORD'),
-        'HOST': config.get('DATABASE', 'HOST'),
-        'PORT': config.get('DATABASE', 'PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config.get('DATABASE', 'ENGINE'),
+#         'NAME': config.get('DATABASE', 'NAME'),
+#         'USER': config.get('DATABASE', 'USER'),
+#         'PASSWORD': config.get('DATABASE', 'PASSWORD'),
+#         'HOST': config.get('DATABASE', 'HOST'),
+#         'PORT': config.get('DATABASE', 'PORT'),
+#     }
+# }
+
 SECRET_KEY = config.get('DJANGO', 'SECRET_KEY')
 DEBUG = config.getboolean('DJANGO', 'DEBUG')
 ALLOWED_HOSTS = config.get('DJANGO', 'ALLOWED_HOSTS').split(',')
