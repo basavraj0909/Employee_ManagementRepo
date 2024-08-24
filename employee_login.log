@@ -2,3 +2,152 @@ WARNING: 2024-08-18 00:23:08,155: log: Bad Request: /employees/register/
 INFO: 2024-08-18 00:26:41,708: autoreload: E:\STUDIES1\django_projects\employee_management_project\employees\serializers.py changed, reloading.
 INFO: 2024-08-18 00:26:44,695: autoreload: Watching for file changes with StatReloader
 INFO: 2024-08-18 00:59:09,824: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:24:37,620: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:27:41,589: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\settings.py changed, reloading.
+INFO: 2024-08-23 21:27:43,480: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:29:32,567: autoreload: Watching for file changes with StatReloader
+WARNING: 2024-08-23 21:29:36,535: log: Not Found: /
+WARNING: 2024-08-23 21:29:36,805: log: Not Found: /favicon.ico
+INFO: 2024-08-23 21:32:31,469: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:32:32,905: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:32:48,863: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:32:50,119: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:32:55,113: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:32:56,458: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:00,750: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:02,185: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:05,209: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:06,645: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:09,529: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:11,018: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:15,223: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:16,747: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:22,176: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:23,588: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:34,118: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:35,830: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:38,638: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:40,353: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:43,707: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:45,370: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:33:54,909: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:33:56,174: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:00,266: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:02,160: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:11,811: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:13,045: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:36,903: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:38,171: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:42,387: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:43,778: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:47,948: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:49,562: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:52,419: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:53,756: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:34:55,638: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:34:56,908: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:03,130: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:04,724: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:13,200: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:14,752: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:20,494: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:21,777: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:26,873: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:28,130: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:40,724: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:41,927: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:47,841: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:49,137: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:35:54,060: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:35:55,241: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:01,445: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:02,796: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:06,814: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:08,097: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:12,977: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:14,227: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:19,297: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:20,636: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:28,815: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:30,128: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:36,263: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:37,598: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:42,753: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:44,155: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-23 21:36:56,063: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-23 21:36:57,683: autoreload: Watching for file changes with StatReloader
+WARNING: 2024-08-24 11:42:11,331: log: Not Found: /
+INFO: 2024-08-24 11:43:49,669: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:43:55,193: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:43:59,052: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:44:00,686: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:44:04,565: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:44:05,811: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:45:08,270: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:45:09,578: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:45:18,122: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:45:19,271: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:45:32,036: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:45:33,435: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:45:39,738: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:45:41,425: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:47:42,824: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\urls.py changed, reloading.
+INFO: 2024-08-24 11:47:44,245: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:48:13,848: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\urls.py changed, reloading.
+INFO: 2024-08-24 11:48:15,138: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:48:23,329: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\urls.py changed, reloading.
+INFO: 2024-08-24 11:48:24,719: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:48:27,018: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\urls.py changed, reloading.
+INFO: 2024-08-24 11:48:28,257: autoreload: Watching for file changes with StatReloader
+WARNING: 2024-08-24 11:48:30,505: log: Not Found: /
+INFO: 2024-08-24 11:49:14,632: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\employee_management_project\urls.py changed, reloading.
+INFO: 2024-08-24 11:49:15,950: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:49:25,393: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\urls.py changed, reloading.
+INFO: 2024-08-24 11:49:26,548: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:49:28,602: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\urls.py changed, reloading.
+INFO: 2024-08-24 11:49:29,935: autoreload: Watching for file changes with StatReloader
+ERROR: 2024-08-24 11:49:35,370: log: Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py", line 21, in landing_page
+    "Employees API": reverse('employees-list'),
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\urls\resolvers.py", line 828, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'employees-list' not found. 'employees-list' is not a valid view function or pattern name.
+INFO: 2024-08-24 11:51:27,436: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:51:28,786: autoreload: Watching for file changes with StatReloader
+ERROR: 2024-08-24 11:51:45,888: log: Internal Server Error: /
+Traceback (most recent call last):
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py", line 25, in landing_page
+    return render(request, 'landing_page.html', {'links': links})
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "E:\STUDIES1\celeryenv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: landing_page.html
+INFO: 2024-08-24 11:52:31,573: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:53:12,269: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:53:13,536: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:54:24,877: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:54:26,455: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:54:51,247: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:54:52,419: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:55:50,231: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:55:51,403: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:56:53,432: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\views.py changed, reloading.
+INFO: 2024-08-24 11:56:54,672: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:57:56,607: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\urls.py changed, reloading.
+INFO: 2024-08-24 11:57:57,759: autoreload: Watching for file changes with StatReloader
+INFO: 2024-08-24 11:58:13,532: autoreload: E:\STUDIES1\django_projects\DjangoEmployeeRepo\employee_management_project\emp_routers_app\serializers.py changed, reloading.
+INFO: 2024-08-24 11:58:14,657: autoreload: Watching for file changes with StatReloader
