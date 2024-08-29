@@ -21,4 +21,6 @@ config.ini
 
 # Virtual Environment
 venv/
-g
+
+# Log files
+*.log
