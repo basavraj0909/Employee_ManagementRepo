@@ -73,6 +73,31 @@ DATABASES = {
     }
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default_format': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s.%(module)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S",
+        },
+    },
+    'handlers': {
+        'employee_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'employee.log'),
+            'formatter': 'default_format',
+        },
+    },
+    'loggers': {
+        'employee': {  # Logger for Employee model
+            'handlers': ['employee_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
