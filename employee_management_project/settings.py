@@ -8,9 +8,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 config = configparser.RawConfigParser()
 config.read(os.path.join(BASE_DIR, r'config.ini'))
-
 print(f"Sections in config: {config.sections()}")
 
+SECRET_KEY = config.get('DJANGO', 'SECRET_KEY')
+DEBUG = config.getboolean('DJANGO', 'DEBUG')
+ALLOWED_HOSTS = config.get('DJANGO', 'ALLOWED_HOSTS').split(',')
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
@@ -25,8 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
-    'employees',
-    'emp_routers_app',
+    'employee',  # created on 29/8/24
+    # 'emp_routers_app',
 ]
 
 MIDDLEWARE = [
@@ -60,28 +62,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'employee_management_project.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': config.get('DATABASE', 'ENGINE'),
+        'NAME': config.get('DATABASE', 'NAME'),
+        'USER': config.get('DATABASE', 'USER'),
+        'PASSWORD': config.get('DATABASE', 'PASSWORD'),
+        'HOST': config.get('DATABASE', 'HOST'),
+        'PORT': config.get('DATABASE', 'PORT'),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': config.get('DATABASE', 'ENGINE'),
-#         'NAME': config.get('DATABASE', 'NAME'),
-#         'USER': config.get('DATABASE', 'USER'),
-#         'PASSWORD': config.get('DATABASE', 'PASSWORD'),
-#         'HOST': config.get('DATABASE', 'HOST'),
-#         'PORT': config.get('DATABASE', 'PORT'),
-#     }
-# }
-
-SECRET_KEY = config.get('DJANGO', 'SECRET_KEY')
-DEBUG = config.getboolean('DJANGO', 'DEBUG')
-ALLOWED_HOSTS = config.get('DJANGO', 'ALLOWED_HOSTS').split(',')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -151,9 +141,11 @@ LOGGING = {
 REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',  # If using Token Auth
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',  # If using JWT Auth
+
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
