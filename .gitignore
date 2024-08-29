@@ -17,6 +17,7 @@ config.ini
 .idea/
 .DS_Store
 *.swp
+*.log
 
 # Virtual Environment
 venv/
