@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'employee',  # created on 29/8/24
-    # 'emp_routers_app',
+    'registration',  # created on 31/8/24
 ]
 
 MIDDLEWARE = [
@@ -177,4 +177,23 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+
+# Twilio Credentials
+TWILIO_ACCOUNT_SID = config['twilio']['account_sid']
+TWILIO_AUTH_TOKEN = config['twilio']['auth_token']
+TWILIO_PHONE_NUMBER = config['twilio']['phone_number']
+
+# Use these variables as needed, for example, initializing Twilio client
+from twilio.rest import Client
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+
+
+# Simple JWT Settings
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
