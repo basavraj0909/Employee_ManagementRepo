@@ -15,13 +15,33 @@ from rest_framework.response import Response
 from rest_framework import status
 import logging
 from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import CustomUserSerializer
 
 logger = logging.getLogger('employee')
+
+class RegisterUserView(generics.CreateAPIView):
+    serializer_class = CustomUserSerializer
+    permission_classes = [AllowAny]  # Ensure anyone can access this endpoint
+
+def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response({"message": "User created successfully", "user": serializer.data}, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
     def create(self, request, *args, **kwargs):
         """
