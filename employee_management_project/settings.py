@@ -29,7 +29,8 @@ INSTALLED_APPS = [
 
     'employee',  # created on 29/8/24
     'registration',  # created on 31/8/24
-    'profile_management' # created on 1/9/24
+    'profile_management', # created on 1/9/24
+    'blog' # created on 1/9/24
 ]
 
 MIDDLEWARE = [
