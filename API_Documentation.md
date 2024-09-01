@@ -60,3 +60,51 @@ RESPONSE:
             "company": null,
             "state": null
         }   
+
+###=========================================================
+
+### Blog POST API for authenticated users
+
+REQUEST: GET http://127.0.0.1:8000/api/blogs/
+
+RESPONSE:
+      [
+          {
+              "id": 1,
+              "title": "1st blog",
+              "content": "1st blog"
+          }
+      ]
+
+
+REQUEST: POST http://127.0.0.1:8000/api/blogs/
+
+BODY:
+      {
+          "title": "1st blog",
+          "content": "1st blog"
+      }
+
+RESPONSE:
+      [
+          {
+              "id": 1,
+              "title": "1st blog",
+              "content": "1st blog"
+          }
+      ]
+
+REQUEST: PUT http://127.0.0.1:8000/api/blogs/1/
+      
+BODY: 
+      {
+          "title": "updated1st blog",
+          "content": "1st blog"
+      }
+
+RESPONSE:
+        {
+            "id": 1,
+            "title": "updated1st blog",
+            "content": "updated 1st blog"
+        }
