@@ -11,8 +11,6 @@ Delete Employee:   DELETE http://127.0.0.1:8000/api/employees/{id}/
 from rest_framework import viewsets
 from .models import Employee
 from .serializers import EmployeeSerializer
-from rest_framework.response import Response
-from rest_framework import status
 import logging
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, AllowAny
