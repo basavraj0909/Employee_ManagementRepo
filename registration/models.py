@@ -1,32 +1,45 @@
-from datetime import timedelta
-
 from django.db import models
+from django.conf import settings
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils import timezone
 
-from django.db import models
-from employee.models import Employee
 
-class OTP(models.Model):
-    """
-    Model representing a One-Time Password (OTP) associated with an Employee.
-    Attributes:
-        employee (Employee): The employee to whom the OTP is associated.
-        otp (str): A 6-character string representing the OTP.
-        created_at (datetime): The date and time when the OTP was created.
-        expires_at (datetime): The date and time when the OTP will expire.
-    Methods:
-        save(*args, **kwargs): Overrides the default save method to set the expiration time if not provided.
-        is_expired() -> bool: Returns True if the OTP is expired, otherwise False.
-    """
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    otp = models.CharField(max_length=4)
-    created_at = models.DateTimeField(auto_now_add=True)
-    expires_at = models.DateTimeField()
+class EmployeeManager(BaseUserManager):
+    def create_user(self, username, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
 
-    def save(self, *args, **kwargs):
-        if not self.expires_at:
-            self.expires_at = timezone.now() + timedelta(minutes=5)  # Example expiration time
-        super().save(*args, **kwargs)
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        # self._db typically refers to the default database unless you have configured multiple databases in your Django project.
+        user.save(using=self._db)
+        return user
 
-    def is_expired(self):
-        return timezone.now() > self.expires_at
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user(username, email, password, **extra_fields)
+
+
+class Employee(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15, unique=True)
+    is_phone_verified = models.BooleanField(default=False)
+    date_of_birth = models.DateField(null=True)
+    position = models.CharField(max_length=50, default='NA')
+    date_joined = models.DateField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = EmployeeManager()
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
