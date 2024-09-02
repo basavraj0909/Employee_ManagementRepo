@@ -1,0 +1,71 @@
+TODO: implement it later next time
+
+To modify your existing `CustomUser` model and update the registration process to only include `username`, `password`, `email`, and `phone_number`, you can do the following:
+
+### 1. Update `CustomUser` Model
+Since you want to allow users to update their `first_name`, `last_name`, and `date_of_birth` later via the profile management app, these fields can be made optional (`blank=True`, `null=True`). Here's how you can modify your `CustomUser` model:
+
+```python
+from django.conf import settings
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    phone_number = models.CharField(max_length=15, unique=True, blank=False)
+    is_phone_verified = models.BooleanField(default=False)
+    date_of_birth = models.DateField(null=True, blank=True)  # Optional field
+    first_name = models.CharField(max_length=30, blank=True)  # Optional field
+    last_name = models.CharField(max_length=30, blank=True)   # Optional field
+
+    def __str__(self):
+        return self.username
+```
+
+### 2. Update the Serializer
+Update your serializer to exclude `first_name`, `last_name`, and `date_of_birth` from the registration process.
+
+```python
+from rest_framework import serializers
+from .models import CustomUser
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'password', 'email', 'phone_number']  # Only include necessary fields
+        extra_kwargs = {
+            'password': {'write_only': True},
+        }
+
+    def create(self, validated_data):
+        user = CustomUser(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            phone_number=validated_data['phone_number']
+        )
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+```
+
+### 3. Update the View
+Ensure your view only accepts and processes the fields you've specified in the serializer.
+
+```python
+from rest_framework import generics
+from .models import CustomUser
+from .serializers import CustomUserSerializer
+
+class UserRegistrationView(generics.CreateAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = CustomUserSerializer
+```
+
+### 4. Migrations
+After making these changes, run the following commands to apply the changes to your database:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+With these changes, your registration process will only require `username`, `password`, `email`, and `phone_number`. The users can update their `first_name`, `last_name`, and `date_of_birth` through the profile management app later.

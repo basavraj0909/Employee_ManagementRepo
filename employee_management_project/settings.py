@@ -27,11 +27,16 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'drf_yasg',
 
-    'employee',  # created on 29/8/24
-    'registration',  # created on 31/8/24
+
+    'registration',  # created on 29/8/24
+    'otp_app',  # created on 2/9/24
+    # 'registration',  # created on 2/9/24
     'profile_management', # created on 1/9/24
     'blog' # created on 1/9/24
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -153,4 +158,4 @@ TWILIO_PHONE_NUMBER = config['twilio']['phone_number']
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 # Custom User Model
-AUTH_USER_MODEL = 'employee.CustomUser'
+AUTH_USER_MODEL = 'registration.Employee'

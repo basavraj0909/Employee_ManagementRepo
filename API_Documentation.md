@@ -1,21 +1,50 @@
+#2-9-2024
+# I tried registring user successfully
+# I tried generating user tokenn by providing registered username password successfully.
+# I tried to update authenticated user's profile successfully
+# I tried to verify user's phone_number via otp using twilio package successfully.
+
 # API Documentation
 
-## User Registration API
+## EMployee Registration API
 
+**Endpoint:** `POST http://127.0.0.1:8000/api/register/`
 **Endpoint:** `POST /api/register/`
 
 **Request Body:**
 
 ```json
 {
-    "username": "john_doe",
-    "password": "password123",
-    "first_name": "john",
-    "last_name": "Doe",
-    "email": "test1@example.com",
-    "phone_number": "9881167671",
-    "date_of_birth": "1990-01-01"
+  "username": "bunny0909g",
+  "password": "password123",
+  "email": "bunny@gmail.com",
+  "phone_number": "9881167671",
+  "date_of_birth": "2024-09-02"
 }
+**ResponseBody:**
+
+```json
+{
+    "message": "Employee created successfully",
+    "registration": {
+        "id": 1,
+        "username": "bunny0909g",
+        "email": "bunny@gmail.com",
+        "phone_number": "9881167671",
+        "date_of_birth": "2024-09-02"
+    }
+}
+Get Api token: http://127.0.0.1:8000/api/token/
+      {
+          "username": "bunny0909",
+          "password": "password123"
+      }
+
+
+
+
+
+
 
 
 ### Get userprofile 
@@ -39,26 +68,28 @@ RESPONSE:
       }
 
 ### update user profile by providing the valid access token
-REQUEST:
-        http://127.0.0.1:8000/api/profile/
+REQUEST: PUT http://127.0.0.1:8000/profile/
+
+
 BODY:
     {
         "city": "Pune"
     }
 RESPONSE:
         {
-            "user": {
+            "id": 1,
+            "employee": {
                 "id": 1,
-                "username": "john_doe",
-                "first_name": "john",
-                "last_name": "Doe",
-                "email": "test1@example.com",
-                "phone_number": "9881167671"
+                "username": "bunny09",
+                "email": "bunny2@gmail.com",
+                "phone_number": "+919881167672",
+                "date_of_birth": "2024-09-02"
             },
             "city": "Pune",
             "job_title": null,
             "company": null,
-            "state": null
+            "state": null,
+            "profile_picture": "/media/profile_pictures/DE_tools.JPG"
         }   
 
 ###=========================================================

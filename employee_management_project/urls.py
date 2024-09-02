@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-# from emp_routers_app.views import landing_page
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -22,11 +24,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('employee.urls')),  # Include the employees app URLs
-    path('api/', include('profile_management.urls')),  # Include the profile app URLs
-    path('api/', include('blog.urls')),  # Include the blog app URLs
+    path('', include('registration.urls')),  # Include the employees app URLs
+    path('', include('otp_app.urls')),  # Include the employees app URLs
+    path('', include('profile_management.urls')),  # Include the profile app URLs
+
+    # path('api/', include('blog.urls')),  # Include the blog app URLs
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    # path('api/auth/', include('registration.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
