@@ -1,126 +1,142 @@
-from rest_framework.views import APIView
+"""
+***Access the API***
+List Employees:    GET http://127.0.0.1:8000/api/employees/
+Create Employee:   POST http://127.0.0.1:8000/api/employees/
+Retrieve Employee: GET http://127.0.0.1:8000/api/employees/{id}/
+Update Employee:   PUT http://127.0.0.1:8000/api/employees/{id}/
+Partial Update :   PATCH http://127.0.0.1:8000/api/employees/{id}/
+Delete Employee:   DELETE http://127.0.0.1:8000/api/employees/{id}/
+"""
+
+from rest_framework import viewsets
+from .models import Employee
+from .serializers import EmployeeSerializer
+import logging
+from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import status
-from django.utils import timezone
-from django.conf import settings
-from rest_framework_simplejwt.tokens import RefreshToken
-from twilio.rest import Client
-from .models import OTP
-from employee.models import Employee
-import random
-import datetime
+from .serializers import EmployeeSerializer, EmployeeTokenObtainPairSerializer
 
-import logging
-
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('employee')
 
 
-class RegisterView(APIView):
+class RegisterView(generics.CreateAPIView):
+    serializer_class = EmployeeSerializer
+    permission_classes = [AllowAny]  # Ensure anyone can access this endpoint
 
-    def post(self, request):
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+
+        return Response({"message": "Employee created successfully",
+                         "employee": serializer.data},
+                        status=status.HTTP_201_CREATED, headers=headers)
+
+
+class EmployeeTokenObtainPairView(TokenObtainPairView):
+    serializer_class = EmployeeTokenObtainPairSerializer
+
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
         """
-        Handle the registration of an employee via phone number and OTP (One-Time Password).
-
-        **POST Request:**
-        - phone_number (str): The phone number of the employee.
-        - first_name (str): The first name of the employee.
-        - last_name (str): The last name of the employee.
-        - email (str): The email address of the employee.
-
-        **Response:**
-        - 200 OK: OTP sent successfully.
-        - 400 Bad Request: If any of the required fields are missing.
-        - 409 Conflict: If the phone number is already verified.
-
-        This view generates a one-time password (OTP) and sends it via SMS using Twilio.
-        It also associates the OTP with the Employee model and stores the OTP in the OTP model.
-        The OTP is valid for 10 minutes.
+        Handle the creation of a new Employee.
+        Args:
+            request: The request object containing the data to create a new employee.
+            *args: Additional positional arguments.
+            **kwargs: Additional keyword arguments.
+        Returns:
+            Response: A DRF Response object containing a success message and the created
+                      employee's data, along with an HTTP 201 Created status.
+        Raises:
+            Exception: If an error occurs during employee creation, the exception is
+                       logged and raised to be handled by DRF's default error handling.
         """
-        phone_number = request.data.get('phone_number')
-        first_name = request.data.get('first_name')
-        last_name = request.data.get('last_name')
-        email = request.data.get('email')
+        logger.info(f"Creating a new employee with data: {request.data}")
+        try:
+            response = super().create(request, *args, **kwargs)
+            employee_id = response.data.get('id')
+            logger.info(f"Employee created with ID: {employee_id}")
+            return Response({"message": "Employee created successfully",
+                             "data": response.data},
+                            status=status.HTTP_201_CREATED)
+        except Exception as e:
+            logger.error(f"Error creating employee:{str(e)}")
+            raise
 
-        if not all([phone_number, first_name, last_name, email]):
-            return Response({"error": "All fields are required"}, status=status.HTTP_400_BAD_REQUEST)
+    def update(self, request, *args, **kwargs):
+        """
+        Handle the updating of an existing Employee.
 
-        # Save OTP associated with the Employee model
-        employee, created = Employee.objects.get_or_create(
-            phone_number=phone_number,
-            defaults={
-                'first_name': first_name,
-                'last_name': last_name,
-                'email': email,
-            })
+        Args:
+            request: The request object containing the data to update the employee.
+            *args: Additional positional arguments.
+            **kwargs: Additional keyword arguments, including 'pk' which refers to the ID
+                     of the employee being updated.
 
-        if not created and employee.is_phone_verified:
-            return Response({"error": "Phone number is already registered."},
-                            status=status.HTTP_409_CONFLICT)
+        Returns:
+            Response: A DRF Response object containing a success message and the updated
+                        employee's data, along with an HTTP 200 OK status.
 
-        # Generate OTP
-        otp = str(random.randint(1000, 7777))
-        expires_at = timezone.now() + datetime.timedelta(minutes=10)
-
-        # Send OTP via SMS using Twilio
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-        message = client.messages.create(
-            body=f'''{otp} is your OTP for Registration request on FOODCOURT.
-                \nValid for 10 mins.\nNever share OTP with anyone''',
-            from_=settings.TWILIO_PHONE_NUMBER,
-            to=phone_number
-        )
-        # Save OTP
-        OTP.objects.create(employee=employee, otp=otp, expires_at=expires_at)
-
-        return Response({'message': 'OTP sent successfully'},
-                        status=status.HTTP_200_OK)
-
-
-class VerifyOtpView(APIView):
-
-    def post(self, request):
-        phone_number = request.data.get('phone_number')
-        otp = request.data.get('otp')
-
-        if not phone_number or not otp:
-            return Response({"error": "Phone number and OTP are required"},
-                            status=status.HTTP_400_BAD_REQUEST)
+        Raises:
+            Exception: If an error occurs during the update process, the exception is logged
+                       and raised to be handled by DRF's default error handling.
+        """
+        emp_id = kwargs.get('pk')
+        logger.info(f"Updating employee with ID: {emp_id}")
 
         try:
-            employee = Employee.objects.get(phone_number=phone_number)
-            otp_record = OTP.objects.filter(employee=employee).last()
-        except  Employee.DoesNotExist:
-            return Response({'error': "Invalid phone number"},
+            response = super().update(request, *args, **kwargs)
+            logger.info(f"Updated employee with ID: {emp_id}")
+            return Response({"message": "Employee updated successfully.",
+                             "data": response.data},
+                            status=status.HTTP_200_OK)
+
+        except Exception as e:
+            logger.error(f'Error updating employee: {str(e)}')
+            raise
+
+    def destroy(self, request, *args, **kwargs):
+        """
+        Handle the deletion of an existing Employee.
+
+        Args:
+
+            request: The request object initiating the deletion.
+            *args: Additional positional arguments.
+            **kwargs: Additional keyword arguments, including 'pk' which refers to the ID
+                     of the employee being deleted.
+
+        Returns:
+            Response: A DRF Response object containing a success message and an HTTP 204 No
+                      Content status if the deletion is successful. In case of an error,
+                      it returns an HTTP 400 Bad Request response with an error message.
+        Raises:
+            Http404: If the employee with the specified ID does not exist.
+        """
+        emp_id = kwargs.get('pk')
+        logger.info(f"Attempting to delete employee with ID: {emp_id}")
+
+        # Check if the employee exists
+        employee = get_object_or_404(Employee, pk=emp_id)
+        try:
+            response = super().destroy(request, *args, **kwargs)
+            logger.info(f"Employee deleted with ID: {emp_id}")
+            return Response({"message": "Employee deleted successfully."},
+                            status=status.HTTP_204_NO_CONTENT)
+
+        except Exception as e:
+            logger.error(f"Error deleting employee with ID {emp_id}: {str(e)}")
+            return Response({"error": "An error occurred while deleting the employee."},
                             status=status.HTTP_400_BAD_REQUEST)
-        logger.debug(f"Received OTP: {otp}, Stored OTP: {otp_record.otp}")
-
-        if otp_record.otp == otp and not otp_record.is_expired():
-            # TODO Here, you can add logic to mark the employee as verified, if needed
-            employee.is_phone_verified = True  # Assuming you have a field like this
-            employee.save()
-
-            # TODO Generate JWT token (optional)
-            refresh = RefreshToken.for_user(employee)
-            return Response({
-                'refres': str(refresh),
-                'access': str(refresh.access_token)
-            }, status=status.HTTP_200_OK)
-
-        return Response({"error": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST)
-
-
-# Req Body for registration
-"""
-{
-    "phone_number": "+1234567890",
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "johndoe@example.com",
-    "date_of_birth": "1990-01-01"
-}
-"""
-
-"""
-Register: POST /api/auth/register/
-Verify OTP: POST /api/auth/verify-otp/
-"""
