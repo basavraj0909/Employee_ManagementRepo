@@ -24,6 +24,8 @@ class EmployeeManager(BaseUserManager):
 
 
 class Employee(AbstractBaseUser, PermissionsMixin):
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, unique=True)

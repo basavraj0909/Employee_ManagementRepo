@@ -21,7 +21,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import EmployeeSerializer, EmployeeTokenObtainPairSerializer
 
-logger = logging.getLogger('employee')
+logger = logging.getLogger('registration')
 
 
 class RegisterView(generics.CreateAPIView):
@@ -35,7 +35,7 @@ class RegisterView(generics.CreateAPIView):
         headers = self.get_success_headers(serializer.data)
 
         return Response({"message": "Employee created successfully",
-                         "employee": serializer.data},
+                         "registration": serializer.data},
                         status=status.HTTP_201_CREATED, headers=headers)
 
 
@@ -53,17 +53,17 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         """
         Handle the creation of a new Employee.
         Args:
-            request: The request object containing the data to create a new employee.
+            request: The request object containing the data to create a new registration.
             *args: Additional positional arguments.
             **kwargs: Additional keyword arguments.
         Returns:
             Response: A DRF Response object containing a success message and the created
-                      employee's data, along with an HTTP 201 Created status.
+                      registration's data, along with an HTTP 201 Created status.
         Raises:
-            Exception: If an error occurs during employee creation, the exception is
+            Exception: If an error occurs during registration creation, the exception is
                        logged and raised to be handled by DRF's default error handling.
         """
-        logger.info(f"Creating a new employee with data: {request.data}")
+        logger.info(f"Creating a new registration with data: {request.data}")
         try:
             response = super().create(request, *args, **kwargs)
             employee_id = response.data.get('id')
@@ -72,7 +72,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
                              "data": response.data},
                             status=status.HTTP_201_CREATED)
         except Exception as e:
-            logger.error(f"Error creating employee:{str(e)}")
+            logger.error(f"Error creating registration:{str(e)}")
             raise
 
     def update(self, request, *args, **kwargs):
@@ -80,31 +80,31 @@ class EmployeeViewSet(viewsets.ModelViewSet):
         Handle the updating of an existing Employee.
 
         Args:
-            request: The request object containing the data to update the employee.
+            request: The request object containing the data to update the registration.
             *args: Additional positional arguments.
             **kwargs: Additional keyword arguments, including 'pk' which refers to the ID
-                     of the employee being updated.
+                     of the registration being updated.
 
         Returns:
             Response: A DRF Response object containing a success message and the updated
-                        employee's data, along with an HTTP 200 OK status.
+                        registration's data, along with an HTTP 200 OK status.
 
         Raises:
             Exception: If an error occurs during the update process, the exception is logged
                        and raised to be handled by DRF's default error handling.
         """
         emp_id = kwargs.get('pk')
-        logger.info(f"Updating employee with ID: {emp_id}")
+        logger.info(f"Updating registration with ID: {emp_id}")
 
         try:
             response = super().update(request, *args, **kwargs)
-            logger.info(f"Updated employee with ID: {emp_id}")
+            logger.info(f"Updated registration with ID: {emp_id}")
             return Response({"message": "Employee updated successfully.",
                              "data": response.data},
                             status=status.HTTP_200_OK)
 
         except Exception as e:
-            logger.error(f'Error updating employee: {str(e)}')
+            logger.error(f'Error updating registration: {str(e)}')
             raise
 
     def destroy(self, request, *args, **kwargs):
@@ -116,19 +116,19 @@ class EmployeeViewSet(viewsets.ModelViewSet):
             request: The request object initiating the deletion.
             *args: Additional positional arguments.
             **kwargs: Additional keyword arguments, including 'pk' which refers to the ID
-                     of the employee being deleted.
+                     of the registration being deleted.
 
         Returns:
             Response: A DRF Response object containing a success message and an HTTP 204 No
                       Content status if the deletion is successful. In case of an error,
                       it returns an HTTP 400 Bad Request response with an error message.
         Raises:
-            Http404: If the employee with the specified ID does not exist.
+            Http404: If the registration with the specified ID does not exist.
         """
         emp_id = kwargs.get('pk')
-        logger.info(f"Attempting to delete employee with ID: {emp_id}")
+        logger.info(f"Attempting to delete registration with ID: {emp_id}")
 
-        # Check if the employee exists
+        # Check if the registration exists
         employee = get_object_or_404(Employee, pk=emp_id)
         try:
             response = super().destroy(request, *args, **kwargs)
@@ -137,6 +137,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
                             status=status.HTTP_204_NO_CONTENT)
 
         except Exception as e:
-            logger.error(f"Error deleting employee with ID {emp_id}: {str(e)}")
-            return Response({"error": "An error occurred while deleting the employee."},
+            logger.error(f"Error deleting registration with ID {emp_id}: {str(e)}")
+            return Response({"error": "An error occurred while deleting the registration."},
                             status=status.HTTP_400_BAD_REQUEST)
